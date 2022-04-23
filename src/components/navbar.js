@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Logo from './logo';
-import Cart from './Cart';
+import Cart from './cart';
 
 const styles = {
   navbar: {
