@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import BubbleAlert from './bubbleAlert';
+import CartDetails from './cartDetails';
 
 const styles = {
   cart: {
@@ -19,12 +20,17 @@ const styles = {
 
 class Cart extends Component {
   render() {
+    const { cart, isCartDisplayed, displayCart } = this.props;
+    const totalQuantity = cart.reduce((acc, el) => acc + el.quantity, 0);
     return (
       <div>
         <span style={styles.bubble}>
-          <BubbleAlert value={10} />
+          {totalQuantity !== 0 ? <BubbleAlert value={totalQuantity} /> : null}
         </span>
-        <button style={styles.cart}>Cart</button>
+        <button style={styles.cart} onClick={displayCart}>
+          Cart
+        </button>
+        {isCartDisplayed ? <CartDetails cart={cart} /> : null}
       </div>
     );
   }
